@@ -21,7 +21,7 @@
 
     $app['webroot'] = getenv('WEBROOT');
     if ($app['webroot'] == false) {
-        $app['webroot'] = '/account/web/';
+        $app['webroot'] = '/account/web';
     }
     $app['twig']->addGlobal('webroot', $app['webroot']);
 
@@ -50,7 +50,7 @@
         update_user_name($id, $request->get('user-name'));
         update_user_email($id, $request->get('user-email'));
         
-        return $app->redirect($app['webroot'].'settings');
+        return $app->redirect($app['webroot'].'/settings');
     });
 
     $app->post('/info/avatar', function(Request $request) use ($app){
@@ -61,7 +61,7 @@
 
     $app->get('/friends', function(Request $request) use ($app) {
         if (!$app['session']->has('id')){
-            return $app->redirect($app['webroot'].'login');
+            return $app->redirect($app['webroot'].'/login');
         }
         
         $friend_requests = get_friend_request_users($app['session']->get('id'));
@@ -96,13 +96,13 @@
             $app['session']->set('name', $user['name']);
             $app['session']->set('email', $user['email']);
             $app['session']->set('avatar', $user['avatar_path']);
-            return $app->redirect($app['webroot'].'settings');
+            return $app->redirect($app['webroot'].'/settings');
         }
     });
 
     $app->post('/search', function(Request $request) use ($app){
        if(!$app['session']->has('id')){
-           return $app->redirect($app['webroot'].'login');
+           return $app->redirect($app['webroot'].'/login');
        } 
         
         $search_input = $request->get('searchTerm');

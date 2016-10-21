@@ -15,8 +15,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="{{ webroot }}settings">SETTINGS</a></li>
-                    <li><a href="{{ webroot }}friends">FRIENDS</a></li>
+                    <li><a href="{{ webroot }}/settings">SETTINGS</a></li>
+                    <li><a href="{{ webroot }}/friends">FRIENDS</a></li>
                 </ul>
             </nav>
         </header>
